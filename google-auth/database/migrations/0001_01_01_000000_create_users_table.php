@@ -13,12 +13,15 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('oauth_provider');
+            $table->string('oauth_uid');
+            $table->string('first_name');
+            $table->string('last_name')->nullable();
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->string('gender')->nullable();
+            $table->string('locale')->nullable();
+            $table->string('picture')->nullable();
+            $table->timestamps(); // This will create 'created_at' and 'updated_at' columns
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
